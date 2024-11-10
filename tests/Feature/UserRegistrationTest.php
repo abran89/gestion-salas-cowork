@@ -17,9 +17,8 @@ class UserRegistrationTest extends TestCase
      * que el usuario se crea en la base de datos y es redirigido
      *
      * @return void
-     * @test
      */
-    public function it_registers_a_new_user_successfully()
+    public function test_registers_a_new_user_successfully()
     {
         $data = [
             'name' => $this->faker->name,
@@ -43,9 +42,8 @@ class UserRegistrationTest extends TestCase
      * verificando que se genere un error de validación
      *
      * @return void
-     * @test
      */
-    public function it_validates_the_email_is_unique()
+    public function test_validates_the_email_is_unique()
     {
         $existingEmail = $this->faker->unique()->safeEmail;
 
@@ -71,9 +69,8 @@ class UserRegistrationTest extends TestCase
      * y comprueba que no se crea el usuario
      *
      * @return void
-     * @test
      */
-    public function it_validates_the_password_confirmation()
+    public function test_validates_the_password_confirmation()
     {
         $data = [
             'name' => $this->faker->name,
