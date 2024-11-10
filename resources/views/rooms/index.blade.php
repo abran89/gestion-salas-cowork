@@ -5,7 +5,7 @@
 @section('content')
     <div class="container-fluid d-flex flex-column" style="background-color: #121212; min-height: 100vh;">
 
-        <!-- Navbar -->
+       <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="border-radius: 0 0 15px 15px;">
             <div class="container">
                 <a class="navbar-brand" href="#">Cowork</a>
@@ -14,12 +14,33 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('rooms.index') }}">Salas</a>
-                        </li>
+
+                        <!-- Dropdown visible solo para administradores -->
+                        @auth
+                            @if(Auth::user()->is_admin)
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="salasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Salas
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="salasDropdown">
+                                        <li><a class="dropdown-item" href="{{ route('rooms.index') }}">Ver Salas</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('rooms.create') }}">Crear Sala</a></li>
+                                    </ul>
+                                </li>
+                            @endif
+                        @endauth
+
+                        <!-- Nombre del usuario autenticado -->
+                        @auth
+                            <li class="nav-item">
+                                <span class="nav-link text-white">Bienvenido, {{ Auth::user()->name }}</span>
+                            </li>
+                        @endauth
+
+                        <!-- Opción de cerrar sesión -->
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}"
-                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>

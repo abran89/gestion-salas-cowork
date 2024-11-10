@@ -32,3 +32,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/rooms', [RoomController::class, 'index'])->name('rooms.index');
 });
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/rooms/create', function () {
+        return view('rooms/create');
+    })->name('rooms.create');
+});
