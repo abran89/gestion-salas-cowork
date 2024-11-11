@@ -5,7 +5,6 @@
     <div class="row justify-content-center">
         @auth
             @if(Auth::user()->is_admin)
-                <!-- Contenido para Admin -->
                 <div class="col-12 text-center">
                     <div class="card bg-dark text-white">
                         <div class="card-body">
@@ -17,7 +16,7 @@
                     </div>
                 </div>
             @else
-                <!-- Contenido para Usuario Normal -->
+
                 <div class="col-12 text-center">
                     <div class="card bg-dark text-white">
                         <div class="card-body">
