@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\RoomController;
-use App\Models\Room;
+use App\Http\Controllers\ReservationController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,10 +31,15 @@ Route::post('register', [RegisterController::class, 'register']);
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::middleware('auth')->group(function () {
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
     Route::get('/home',function () {
         return view('home');
     })->name('home');
+
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+    Route::post('/reservations',[ReservationController::class, 'store'])->name('reservations.store');
+    Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
 });
 
 Route::middleware('admin')->group(function () {
