@@ -54,7 +54,7 @@
                         @auth
                             <div class="text-center">
                                 <p class="text-success">¡Estás autenticado!</p>
-                                <a href="{{ route('home') }}" class="btn btn-success btn-lg">Ir al inicio</a>
+                                <a href="{{ route('dashboard') }}" class="btn btn-success btn-lg">Ir al menu</a>
                             </div>
                         @endauth
                     </div>

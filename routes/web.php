@@ -34,8 +34,8 @@ Route::middleware('auth')->group(function () {
 
     // Página de inicio después de autenticarse
     Route::get('/home', function () {
-        return view('home');
-    })->name('home');
+        return view('dashboard');
+    })->name('dashboard');
 
     // Ruta para cerrar sesión
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

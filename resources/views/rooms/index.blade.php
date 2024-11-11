@@ -22,7 +22,7 @@
                                 <td>
                                     <a href="{{ route('rooms.edit', $room->id) }}" class="btn btn-warning btn-sm">Modificar</a>
 
-                                    <form action="{{ route('rooms.destroy', $room->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta sala?');">
+                                    <form action="{{ route('rooms.destroy', $room->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta sala? Se eliminaran las reservaciones creadas.');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>

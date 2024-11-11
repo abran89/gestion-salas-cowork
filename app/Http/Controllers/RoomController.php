@@ -8,11 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class RoomController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Muestra una lista de todas las salas disponibles
      *
