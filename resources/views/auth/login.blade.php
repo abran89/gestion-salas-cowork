@@ -47,7 +47,7 @@
                         @auth
                             <div class="text-center">
                                 <p class="text-success">¡Estás autenticado!</p>
-                                <a href="{{ route('rooms.index') }}" class="btn btn-success btn-lg">Ir al inicio</a>
+                                <a href="{{ route('home') }}" class="btn btn-success btn-lg">Ir al inicio</a>
                             </div>
                         @endauth
                     </div>
