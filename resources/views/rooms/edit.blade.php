@@ -2,13 +2,12 @@
 
 @section('dashboard-content')
 
-<div class="card shadow-lg border-0" style="border-radius: 15px; background-color: #1e1e1e;">
+<div class="card shadow-lg border-0 col-md-6" style="border-radius: 15px; background-color: #1e1e1e;">
     <div class="card-header text-center bg-dark text-white" style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
         <h4 class="mb-0">Modificar Sala: {{ $room->id }}</h4>
     </div>
     <div class="card-body text-white">
 
-        <!-- Formulario para modificar la sala -->
         <form action="{{ route('rooms.update', $room->id) }}" method="POST">
             @csrf
             @method('PUT')

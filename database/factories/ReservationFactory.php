@@ -25,7 +25,7 @@ class ReservationFactory extends Factory
             'room_id' => Room::factory(),
             'user_id' => User::factory(),
             'fecha_inicio' => $this->faker->dateTimeBetween('now', '+1 week'),
-            'fecha_fin' => $this->faker->dateTimeBetween('+1 hour', '+2 hours'),
+            'fecha_fin' => $this->faker->dateTimeBetween('+1 week', '+2 weeks'),
             'estado' => 'Pendiente',
         ];
     }

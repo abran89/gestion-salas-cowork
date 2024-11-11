@@ -24,6 +24,16 @@
                                     </ul>
                                 </li>
                             @endif
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="reservasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Reservas
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="reservasDropdown">
+                                    <li><a class="dropdown-item" href="{{ route('reservations.create') }}">Crear Reserva</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('reservations.index') }}">Listar Reservas</a></li>
+                                </ul>
+                            </li>
                         @endauth
 
                         @auth
@@ -47,11 +57,7 @@
 
         <div class="container text-white mt-4">
             <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="mt-4">
-                        @yield('dashboard-content')
-                    </div>
-                </div>
+                @yield('dashboard-content')
             </div>
         </div>
 

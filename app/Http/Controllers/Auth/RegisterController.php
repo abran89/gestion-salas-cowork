@@ -13,12 +13,17 @@ class RegisterController extends Controller
 {
 
     /**
-     * Maneja la solicitud de registro de un nuevo usuario
-     * Valida los datos recibidos, crea un nuevo usuario en la base de datos
-     * y redirige al usuario a la página de inicio si el registro es exitoso
+     * Procesa el registro de un nuevo usuario, valida los datos del formulario,
+     * crea un nuevo usuario y redirige al usuario con un mensaje de éxito
      *
-     * @param Request $request La solicitud HTTP que contiene los datos de registro del usuario
-     * @return \Illuminate\Http\RedirectResponse Redirección al inicio o respuesta con errores de validación
+     * Este método realiza lo siguiente:
+     * - Valida los datos del formulario (nombre, correo electrónico y contraseña)
+     * - Si los datos son inválidos, redirige de vuelta con los errores y los datos ingresados
+     * - Si los datos son válidos, crea un nuevo usuario en la base de datos con la contraseña cifrada
+     * - Redirige al usuario a la página principal con un mensaje de éxito
+     *
+     * @param Request $request Datos del formulario de registro
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function register(Request $request)
     {
@@ -39,6 +44,6 @@ class RegisterController extends Controller
             'is_admin' => false,
         ]);
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Usuario creado correctamente.');
     }
 }

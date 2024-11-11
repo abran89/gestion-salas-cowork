@@ -5,6 +5,13 @@
     <div class="container-fluid d-flex justify-content-center align-items-center" style="height: 100vh; background-color: #121212;">
         <div class="row justify-content-center w-100">
             <div class="col-md-6 col-lg-4">
+
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
                 <div class="card shadow-lg border-0" style="border-radius: 15px; background-color: #1e1e1e;">
                     <div class="card-header text-center bg-dark text-white" style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
                         <h4 class="mb-0">Iniciar sesión</h4>

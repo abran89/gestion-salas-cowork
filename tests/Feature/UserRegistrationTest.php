@@ -12,9 +12,13 @@ class UserRegistrationTest extends TestCase
     use RefreshDatabase, WithFaker;
 
     /**
-     * Prueba que verifica si un usuario puede registrarse correctamente.
-     * Simula el envío del formulario de registro y comprueba
-     * que el usuario se crea en la base de datos y es redirigido
+     * Prueba para verificar que un nuevo usuario se registre correctamente
+     *
+     * Este método realiza lo siguiente:
+     * - Crea un conjunto de datos para un nuevo usuario, incluyendo nombre, correo electrónico y contraseña
+     * - Simula el envío de una solicitud de registro con esos datos
+     * - Verifica que el usuario haya sido guardado correctamente en la base de datos
+     * - Verifica que el sistema redirija al usuario a la página principal después del registro
      *
      * @return void
      */
@@ -36,10 +40,14 @@ class UserRegistrationTest extends TestCase
         $response->assertRedirect('/');
     }
 
-   /**
-     * Prueba que valida que no se puedan registrar usuarios con correos electrónicos duplicados
-     * Crea un usuario y luego intenta registrar otro usuario con el mismo correo,
-     * verificando que se genere un error de validación
+    /**
+     * Prueba para verificar que el correo electrónico sea único durante el registro
+     *
+     * Este método realiza lo siguiente:
+     * - Crea un usuario con un correo electrónico único previamente generado
+     * - Intenta registrar un nuevo usuario utilizando el mismo correo electrónico que ya existe en la base de datos
+     * - Verifica que solo haya un usuario registrado en la base de datos
+     * - Verifica que se muestre un error en el correo electrónico durante el registro
      *
      * @return void
      */
@@ -63,10 +71,14 @@ class UserRegistrationTest extends TestCase
         $response->assertSessionHasErrors('email');
     }
 
-     /**
-     * Prueba que verifica que la confirmación de la contraseña sea correcta
-     * Intenta registrar un usuario con una contraseña y confirmación que no coinciden
-     * y comprueba que no se crea el usuario
+    /**
+     * Prueba para verificar que la confirmación de la contraseña sea válida durante el registro
+     *
+     * Este método realiza lo siguiente:
+     * - Crea un conjunto de datos para registrar un nuevo usuario, donde la contraseña y su confirmación no coinciden
+     * - Intenta registrar un usuario con las contraseñas no coincidentes
+     * - Verifica que ningún usuario se haya registrado en la base de datos
+     * - Verifica que se muestre un error en el campo de la contraseña
      *
      * @return void
      */

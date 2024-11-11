@@ -14,11 +14,13 @@ class LoginTest extends TestCase
     use RefreshDatabase, WithFaker;
 
     /**
-     * Prueba básica para verificar la funcionalidad de inicio de sesión
+     * Prueba para verificar que un usuario pueda iniciar sesión con credenciales correctas
      *
-     * Esta prueba crea un usuario con datos aleatorios utilizando Faker
-     * Posteriormente realiza una solicitud de inicio de sesión con las credenciales correctas
-     * Verifica que la sesión se inicie correctamente y que la redirección sea a la página esperada
+     * Este método realiza lo siguiente:
+     * - Crea un usuario con una dirección de correo electrónico única y una contraseña segura
+     * - Intenta iniciar sesión usando las credenciales del usuario
+     * - Verifica que el usuario esté autenticado correctamente
+     * - Verifica que el usuario sea redirigido a la página de inicio ("/home") después de iniciar sesión
      *
      * @return void
      */
@@ -39,12 +41,14 @@ class LoginTest extends TestCase
         $response->assertRedirect('/home');
     }
 
-    /**
+   /**
      * Prueba para verificar que el inicio de sesión falla con credenciales incorrectas
      *
-     * Esta prueba crea un usuario con datos aleatorios
-     * Luego intenta hacer inicio de sesión con una contraseña incorrecta
-     * Verifica que el usuario no sea autenticado y que se muestre el error correspondiente en la sesión
+     * Este método realiza lo siguiente:
+     * - Crea un usuario con una dirección de correo electrónico única y una contraseña segura
+     * - Intenta iniciar sesión utilizando las credenciales del usuario con una contraseña incorrecta
+     * - Verifica que el usuario no esté autenticado
+     * - Verifica que se muestre un error de sesión relacionado con el campo "email"
      *
      * @return void
      */

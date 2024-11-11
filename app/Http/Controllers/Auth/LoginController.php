@@ -10,12 +10,18 @@ use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-     /**
-     * Procesa el inicio de sesión del usuario, se validan los datos del formulario,
-     * se intenta hacer autentificar, si es correcto va al dashboard de salas y sino se redirige con el error
+    /**
+     * Procesa el inicio de sesión del usuario, valida los datos del formulario de inicio de sesión,
+     * autentica al usuario y redirige a la página deseada
      *
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * Este método realiza lo siguiente:
+     * - Valida los datos del formulario (correo electrónico y contraseña)
+     * - Si los datos son incorrectos, redirige con los errores de validación
+     * - Si la autenticación es exitosa, redirige al dashboard
+     * - Si la autenticación falla, lanza una excepción con un mensaje de error
+     *
+     * @param Request $request Datos del formulario de inicio de sesión
+     * @return \Illuminate\Http\RedirectResponse Redirige al dashboard
      * @throws \Illuminate\Validation\ValidationException
      */
     public function login(Request $request)
@@ -39,6 +45,18 @@ class LoginController extends Controller
         ]);
     }
 
+    /**
+     * Procesa el cierre de sesión del usuario, invalida la sesión y redirige al usuario a la página de inicio
+     *
+     * Este método realiza lo siguiente:
+     * - Cierra la sesión del usuario utilizando el método `Auth::logout()`
+     * - Invalida la sesión actual para evitar posibles usos no autorizados
+     * - Regenera el token de la sesión para prevenir ataques CSRF
+     * - Redirige al usuario a la página de inicio ('/')
+     *
+     * @param Request $request Datos de la sesión
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function logout(Request $request)
     {
         Auth::logout();
