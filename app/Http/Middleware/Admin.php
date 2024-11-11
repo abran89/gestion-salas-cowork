@@ -16,7 +16,7 @@ class Admin
     public function handle(Request $request, Closure $next): Response
     {
         if (!auth()->check() || !auth()->user()->is_admin) {
-            return redirect('/');
+            abort(403, 'No tienes permiso para acceder a esta página.');
         }
 
         return $next($request);

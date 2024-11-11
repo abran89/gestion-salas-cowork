@@ -31,7 +31,7 @@ class LoginController extends Controller
         }
 
         if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect()->intended('/rooms');
+            return redirect()->intended('/home');
         }
 
         throw ValidationException::withMessages([
