@@ -33,9 +33,15 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
         if ($exception instanceof QueryException) {
-            if (str_contains($exception->getMessage(), 'SQLSTATE[HY000] [2002]')) {
-                return response()->view('errors.database', [], 500);
-            }
+
+            $errorDetails = [
+                'message' => 'Hubo un problema al intentar conectar con la base de datos.',
+                'error' => $exception->getMessage(),
+                'code' => $exception->getCode()
+            ];
+
+            return response()->view('errors.database', compact('errorDetails'), 500);
+
         }
 
         return parent::render($request, $exception);

@@ -138,6 +138,30 @@ PASS  Tests\Feature\UserRegistrationTest
   ✓ validates the password confirmation
 ```
 
+## Manejo Personalizado de Errores
+
+### Descripción
+
+Se ha implementado un manejo personalizado de errores, específicamente para gestionar excepciones relacionadas con la conexión a la base de datos. En caso de que el sistema no pueda conectarse a la base de datos o se presenten otros errores relacionados, el usuario recibirá un mensaje claro y comprensible, sin exponer detalles técnicos sensibles.
+
+### Implementación
+
+El sistema detecta automáticamente los errores de conexión a la base de datos, como los problemas con MySQL, y maneja las excepciones de manera controlada. Cuando ocurre un error, el sistema:
+
+- Captura la excepción relacionada con la base de datos.
+- Muestra un mensaje amigable al usuario, indicando que ha habido un problema con la conexión.
+- Proporciona un mensaje de error general y se asegura de que los detalles específicos no se expongan al usuario final.
+
+### Ventajas
+
+- **Mejor experiencia de usuario**: En lugar de mostrar errores técnicos o mensajes crípticos, el usuario recibe un mensaje claro y comprensible, mejorando la experiencia del usuario final.
+  
+- **Seguridad**: No se exponen detalles sensibles sobre la infraestructura del sistema ni de la base de datos, lo que reduce el riesgo de posibles vulnerabilidades.
+  
+- **Diagnóstico simplificado**: El manejo adecuado de los errores permite a los administradores y desarrolladores identificar y resolver problemas con mayor rapidez, sin comprometer la seguridad o la experiencia del usuario.
+  
+- **Mantenimiento y escalabilidad**: Esta estrategia asegura que el sistema esté preparado para manejar problemas de conexión de forma uniforme y controlada, lo que facilita la escalabilidad y mantenimiento del sistema a largo plazo.
+
 ## Características
 
 ### funcionalidades principales
